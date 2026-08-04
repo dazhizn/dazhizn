@@ -1,3 +1,7 @@
+<p align="center">
+  <img width="900" src="https://cdn.jsdelivr.net/gh/dazhizn/dazhizn@main/assets/header.svg" alt="header">
+</p>
+
 觉醒谷社区主理人 · JxgAI 开发者。深耕 AIGC 与 LLM Agent 实战落地，构建高可用智能工作流，持续探索多智能体工程化实践。
 
 🚀 **正在深耕**
