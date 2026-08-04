@@ -1,0 +1,291 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 260" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#121124" />
+      <stop offset="50%" stop-color="#17152d" />
+      <stop offset="100%" stop-color="#0d0c18" />
+    </linearGradient>
+
+    <!-- Grid Pattern -->
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#2a2845" stroke-width="0.8" opacity="0.35" />
+    </pattern>
+
+    <!-- Radial Glow Behind Cube -->
+    <radialGradient id="cube-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#5865f2" stop-opacity="0.4" />
+      <stop offset="60%" stop-color="#7289da" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Cube Gradients -->
+    <linearGradient id="cube-top" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.5" />
+    </linearGradient>
+    <linearGradient id="cube-left" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.8" />
+    </linearGradient>
+
+    <!-- 立方体同款渐变 (蓝 -> 紫 渐变) 用于“JxgAI 开发者”文本 -->
+    <linearGradient id="cube-gradient-text" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#60a5fa" />
+      <stop offset="50%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+
+    <!-- 柔和微弱的扫描拖尾 -->
+    <linearGradient id="subtle-scanline-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#94a3b8" stop-opacity="0" />
+      <stop offset="100%" stop-color="#94a3b8" stop-opacity="0.08" />
+    </linearGradient>
+
+    <!-- Particle Glow Filter -->
+    <filter id="particle-glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="1.2" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Cube Glow Filter -->
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Clip Path -->
+    <clipPath id="header-clip">
+      <rect width="850" height="260" rx="20" />
+    </clipPath>
+  </defs>
+
+  <style>
+    .terminal-text {
+      font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+      font-size: 13px;
+      fill: #64748b;
+    }
+    .title {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      fill: #ffffff;
+    }
+    .subtitle {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      fill: #94a3b8;
+    }
+    .highlight-gradient {
+      fill: url(#cube-gradient-text);
+      font-weight: 600;
+    }
+    .desc {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      font-size: 14px;
+      fill: #64748b;
+    }
+    .cmd-prompt {
+      font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+      font-size: 14px;
+      fill: #4ade80;
+    }
+    .cmd-symbol { fill: #38bdf8; }
+    .cmd-text { fill: #e2e8f0; }
+
+    /* ==== CSS 动画效果 ==== */
+
+    /* 光标闪烁 */
+    @keyframes cursor-blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    .cursor {
+      animation: cursor-blink 1s infinite steps(1);
+    }
+
+    /* 3D 方块悬浮 */
+    @keyframes float-cube {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+    .cube-container {
+      animation: float-cube 4s ease-in-out infinite;
+      transform-origin: 160px 145px;
+    }
+
+    /* 灰色平移扫描线动画 */
+    @keyframes scan-down {
+      0% {
+        transform: translateY(-15px);
+        opacity: 0;
+      }
+      15% {
+        opacity: 1;
+      }
+      85% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(275px);
+        opacity: 0;
+      }
+    }
+    .scan-line-group {
+      animation: scan-down 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    /* ==== 颗粒状超小气泡/粒子上升动效 ==== */
+    @keyframes particle-rise-1 {
+      0% {
+        transform: translate(262px, 235px) scale(0.5);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.7;
+      }
+      50% {
+        transform: translate(268px, 135px) scale(1.1);
+        opacity: 0.95;
+      }
+      80% {
+        opacity: 0.35;
+      }
+      100% {
+        transform: translate(264px, 25px) scale(0.6);
+        opacity: 0;
+      }
+    }
+
+    @keyframes particle-rise-2 {
+      0% {
+        transform: translate(282px, 242px) scale(0.6);
+        opacity: 0;
+      }
+      25% {
+        opacity: 0.8;
+      }
+      55% {
+        transform: translate(276px, 125px) scale(1.2);
+        opacity: 0.9;
+      }
+      85% {
+        opacity: 0.3;
+      }
+      100% {
+        transform: translate(284px, 15px) scale(0.4);
+        opacity: 0;
+      }
+    }
+
+    @keyframes particle-rise-3 {
+      0% {
+        transform: translate(248px, 238px) scale(0.4);
+        opacity: 0;
+      }
+      30% {
+        opacity: 0.75;
+      }
+      60% {
+        transform: translate(254px, 115px) scale(1.0);
+        opacity: 0.85;
+      }
+      80% {
+        opacity: 0.25;
+      }
+      100% {
+        transform: translate(250px, 10px) scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    .particle-1 {
+      animation: particle-rise-1 6.8s ease-in-out infinite;
+    }
+    .particle-2 {
+      animation: particle-rise-2 8.2s ease-in-out 2.5s infinite;
+    }
+    .particle-3 {
+      animation: particle-rise-3 6.2s ease-in-out 4.8s infinite;
+    }
+  </style>
+
+  <g clip-path="url(#header-clip)">
+    <!-- 基础背景与网格 -->
+    <rect width="850" height="260" rx="20" fill="url(#bg-grad)" stroke="#2e2b4a" stroke-width="1" />
+    <rect width="850" height="260" rx="20" fill="url(#grid)" />
+
+    <!-- 顶部终端 UI 头 -->
+    <circle cx="36" cy="32" r="5" fill="#ef4444" />
+    <circle cx="52" cy="32" r="5" fill="#eab308" />
+    <circle cx="68" cy="32" r="5" fill="#22c55e" />
+    <text x="88" y="36" class="terminal-text">dazhi@jxgai — ~/studio</text>
+
+    <!-- 动态 3D 立方体 -->
+    <g class="cube-container">
+      <circle cx="160" cy="145" r="110" fill="url(#cube-glow)" />
+      <polygon points="160,95 204,120 160,145 116,120" fill="url(#cube-top)" />
+      <polygon points="116,120 160,145 160,195 116,170" fill="url(#cube-left)" />
+      <polygon points="160,145 204,120 204,170 160,195" fill="#a855f7" fill-opacity="0.7" />
+
+      <g stroke="#93c5fd" stroke-width="1.8" stroke-linejoin="round" filter="url(#glow)">
+        <line x1="160" y1="95" x2="204" y2="120" />
+        <line x1="204" y1="120" x2="160" y2="145" />
+        <line x1="160" y1="145" x2="116" y2="120" />
+        <line x1="116" y1="120" x2="160" y2="95" />
+        <line x1="116" y1="120" x2="116" y2="170" />
+        <line x1="160" y1="145" x2="160" y2="195" />
+        <line x1="204" y1="120" x2="204" y2="170" />
+        <line x1="116" y1="170" x2="160" y2="195" />
+        <line x1="160" y1="195" x2="204" y2="170" />
+      </g>
+    </g>
+
+    <!-- ==== 立方体与大智文本之间的超小颗粒状气泡/微光粒子 ==== -->
+    <g id="rising-particles" filter="url(#particle-glow)">
+      <!-- 颗粒 1 (亮粉紫微光粒子) -->
+      <g class="particle-1">
+        <circle cx="0" cy="0" r="1.5" fill="#e879f9" opacity="0.9" />
+        <circle cx="0" cy="0" r="3" fill="#c084fc" opacity="0.35" />
+      </g>
+      <!-- 颗粒 2 (天蓝发光粒子) -->
+      <g class="particle-2">
+        <circle cx="0" cy="0" r="1.2" fill="#38bdf8" opacity="0.9" />
+        <circle cx="0" cy="0" r="2.5" fill="#60a5fa" opacity="0.4" />
+      </g>
+      <!-- 颗粒 3 (青高亮粒子) -->
+      <g class="particle-3">
+        <circle cx="0" cy="0" r="1.8" fill="#a7f3d0" opacity="0.85" />
+        <circle cx="0" cy="0" r="3.5" fill="#818cf8" opacity="0.3" />
+      </g>
+    </g>
+
+    <!-- 右侧文本内容 -->
+    <g transform="translate(330, 0)">
+      <text x="0" y="105" class="title">大智</text>
+      <text x="0" y="138" class="subtitle">觉醒谷社区主理人 · <tspan class="highlight-gradient">JxgAI 开发者</tspan></text>
+      <text x="0" y="168" class="desc">AIGC 科技爱好者，专注 Agent 实战和应用</text>
+
+      <g transform="translate(0, 205)">
+        <text x="0" y="0" class="cmd-prompt">~/studio <tspan class="cmd-symbol">$</tspan> <tspan class="cmd-text">ship reliable agents</tspan></text>
+        <rect x="250" y="-12" width="8" height="15" fill="#4ade80" class="cursor" />
+      </g>
+    </g>
+
+    <!-- ==== 弱化后的精细灰色扫描线 ==== -->
+    <g class="scan-line-group">
+      <!-- 极轻微的微弱余晖拖尾 -->
+      <rect x="0" y="-15" width="850" height="15" fill="url(#subtle-scanline-grad)" />
+      <!-- 精细低调的灰色平行线 -->
+      <line x1="0" y1="0" x2="850" y2="0" stroke="#94a3b8" stroke-width="0.75" opacity="0.35" />
+    </g>
+  </g>
+</svg>
