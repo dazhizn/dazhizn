@@ -229,24 +229,20 @@
     <circle cx="68" cy="32" r="5" fill="#22c55e" />
     <text x="88" y="36" class="terminal-text">dazhi@jxgai — ~/studio</text>
 
-    <!-- 动态 3D 立方体 -->
+    <!-- 动态 3D 立方体 (已彻底移除顶面蓝色面中央的多余竖线) -->
     <g class="cube-container">
       <circle cx="160" cy="145" r="110" fill="url(#cube-glow)" />
+      <!-- 多边形填充 -->
       <polygon points="160,95 204,120 160,145 116,120" fill="url(#cube-top)" />
       <polygon points="116,120 160,145 160,195 116,170" fill="url(#cube-left)" />
       <polygon points="160,145 204,120 204,170 160,195" fill="#a855f7" fill-opacity="0.7" />
 
-      <g stroke="#93c5fd" stroke-width="1.8" stroke-linejoin="round" filter="url(#glow)">
-        <line x1="160" y1="95" x2="204" y2="120" />
-        <line x1="204" y1="120" x2="160" y2="145" />
-        <line x1="160" y1="145" x2="116" y2="120" />
-        <line x1="116" y1="120" x2="160" y2="95" />
-        <line x1="116" y1="120" x2="116" y2="170" />
-        <line x1="160" y1="145" x2="160" y2="195" />
-        <line x1="204" y1="120" x2="204" y2="170" />
-        <line x1="116" y1="170" x2="160" y2="195" />
-        <line x1="160" y1="195" x2="204" y2="170" />
-      </g>
+      <!-- 外轮廓线：统一闭合 Path + stroke-linejoin="round"，完美无缝 -->
+      <path d="M 160,95 L 204,120 L 204,170 L 160,195 L 116,170 L 116,120 Z" 
+            fill="none" stroke="#93c5fd" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" filter="url(#glow)" />
+      <!-- 内部标准 Y 型分界线 (仅连接中心点至左上、右上及正下方，无顶部中划线) -->
+      <path d="M 160,145 L 116,120 M 160,145 L 204,120 M 160,145 L 160,195" 
+            fill="none" stroke="#93c5fd" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" filter="url(#glow)" />
     </g>
 
     <!-- ==== 立方体与大智文本之间的超小颗粒状气泡/微光粒子 ==== -->
