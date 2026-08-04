@@ -36,12 +36,6 @@
       <stop offset="100%" stop-color="#a855f7" />
     </linearGradient>
 
-    <!-- 柔和微弱的扫描拖尾 -->
-    <linearGradient id="subtle-scanline-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#94a3b8" stop-opacity="0" />
-      <stop offset="100%" stop-color="#94a3b8" stop-opacity="0.08" />
-    </linearGradient>
-
     <!-- Particle Glow Filter -->
     <filter id="particle-glow" x="-100%" y="-100%" width="300%" height="300%">
       <feGaussianBlur stdDeviation="1.2" result="blur" />
@@ -120,27 +114,6 @@
     .cube-container {
       animation: float-cube 4s ease-in-out infinite;
       transform-origin: 160px 145px;
-    }
-
-    /* 灰色平移扫描线动画 */
-    @keyframes scan-down {
-      0% {
-        transform: translateY(-15px);
-        opacity: 0;
-      }
-      15% {
-        opacity: 1;
-      }
-      85% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(275px);
-        opacity: 0;
-      }
-    }
-    .scan-line-group {
-      animation: scan-down 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     }
 
     /* ==== 颗粒状超小气泡/粒子上升动效 ==== */
@@ -229,7 +202,7 @@
     <circle cx="68" cy="32" r="5" fill="#22c55e" />
     <text x="88" y="36" class="terminal-text">dazhi@jxgai — ~/studio</text>
 
-    <!-- 动态 3D 立方体 (已彻底移除顶面蓝色面中央的多余竖线) -->
+    <!-- 动态 3D 立方体 -->
     <g class="cube-container">
       <circle cx="160" cy="145" r="110" fill="url(#cube-glow)" />
       <!-- 多边形填充 -->
@@ -240,7 +213,7 @@
       <!-- 外轮廓线：统一闭合 Path + stroke-linejoin="round"，完美无缝 -->
       <path d="M 160,95 L 204,120 L 204,170 L 160,195 L 116,170 L 116,120 Z" 
             fill="none" stroke="#93c5fd" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" filter="url(#glow)" />
-      <!-- 内部标准 Y 型分界线 (仅连接中心点至左上、右上及正下方，无顶部中划线) -->
+      <!-- 内部标准 Y 型分界线 -->
       <path d="M 160,145 L 116,120 M 160,145 L 204,120 M 160,145 L 160,195" 
             fill="none" stroke="#93c5fd" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" filter="url(#glow)" />
     </g>
@@ -274,14 +247,6 @@
         <text x="0" y="0" class="cmd-prompt">~/studio <tspan class="cmd-symbol">$</tspan> <tspan class="cmd-text">ship reliable agents</tspan></text>
         <rect x="250" y="-12" width="8" height="15" fill="#4ade80" class="cursor" />
       </g>
-    </g>
-
-    <!-- ==== 弱化后的精细灰色扫描线 ==== -->
-    <g class="scan-line-group">
-      <!-- 极轻微的微弱余晖拖尾 -->
-      <rect x="0" y="-15" width="850" height="15" fill="url(#subtle-scanline-grad)" />
-      <!-- 精细低调的灰色平行线 -->
-      <line x1="0" y1="0" x2="850" y2="0" stroke="#94a3b8" stroke-width="0.75" opacity="0.35" />
     </g>
   </g>
 </svg>
