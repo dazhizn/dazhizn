@@ -1,3 +1,7 @@
+<p align="center">
+  <img width="100%" src="https://raw.githubusercontent.com/dazhizn/dazhizn/main/assets/header.svg" alt="banner">
+</p>
+
 ## Hi there 👋
 
 <!--
