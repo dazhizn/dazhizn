@@ -82,10 +82,12 @@
       fill: url(#cube-gradient-text);
       font-weight: 600;
     }
+    /* 优化点 2：调低简介明度，拉开层次感 */
     .desc {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
       font-size: 14px;
-      fill: #64748b;
+      fill: #475569;
+      opacity: 0.85;
     }
     .cmd-prompt {
       font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
@@ -200,7 +202,9 @@
     <circle cx="36" cy="32" r="5" fill="#ef4444" />
     <circle cx="52" cy="32" r="5" fill="#eab308" />
     <circle cx="68" cy="32" r="5" fill="#22c55e" />
-    <text x="88" y="36" class="terminal-text">dazhi@jxgai — ~/studio</text>
+    
+    <!-- 优化点 1：标准的终端冒号格式 -->
+    <text x="88" y="36" class="terminal-text">dazhi@jxgai:~/studio</text>
 
     <!-- 动态 3D 立方体 -->
     <g class="cube-container">
