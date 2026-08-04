@@ -8,14 +8,10 @@
 - **JxgAI** — AI模型中转调度平台，统一聚合多家大模型API，提供轻量化调用网关
 - **觉醒谷社区** — AIGC、Agent技术交流阵地，分享提示词工程、智能体落地实战经验
 
-## 🛠 技术方向
-Python · FastAPI · Docker · LLM Agent · API网关 · AIGC应用开发
+## 🛠 技术栈
 
-## 📎 访问链接
+
+
+
+## 📎 链接入口
 📖 官方文档：[https://docs.51jxg.cc](https://docs.51jxg.cc)
-
-## 📊 Github Stats
-<p align="center">
-  <img height="160" src="https://github-readme-stats.vercel.app/api?username=dazhizn&show_icons=true&theme=tokyonight">
-  <img height="160" src="https://github-readme-streak-stats.herokuapp.com/?user=dazhizn&theme=tokyonight">
-</p>
