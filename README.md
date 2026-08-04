@@ -19,7 +19,7 @@
 
 
 📎 **链接入口**
-📎 链接入口 📖 <a href="https://docs.51jxg.cc" target="_blank">官方文档</a>
+📖 <a href="https://docs.51jxg.cc" target="_blank">官方文档</a>
 
 💬 技术交流、项目合作欢迎邮件联系
 
