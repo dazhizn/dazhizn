@@ -2,7 +2,9 @@
   <img width="100%" src="https://raw.githubusercontent.com/dazhizn/dazhizn/main/assets/header.svg" alt="banner">
 </p>
 
-## Hi there 👋
+```bash
+~/studio $ cat link
+📖 官方文档：https://docs.51jxg.cc
 
 <!--
 **dazhizn/dazhizn** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
