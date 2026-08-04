@@ -11,11 +11,7 @@
 
 
 🛠️ **技术方向**
-
-
-
-
-
+Python · FastAPI · Docker · API网关 · LLM Agent · AIGC应用开发
 
 
 📎 **链接入口**
